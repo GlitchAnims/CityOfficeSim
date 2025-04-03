@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blrfk4bribf54"]
+
+[ext_resource type="Script" uid="uid://cqhruvalqa25g" path="res://scripts/Stronghold.gd" id="1_w4nkp"]
+
+[node name="Stronghold" type="Node"]
+script = ExtResource("1_w4nkp")
+metadata/_custom_type_script = "uid://cqhruvalqa25g"
