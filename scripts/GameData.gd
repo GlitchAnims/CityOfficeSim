@@ -58,3 +58,10 @@ func StrongholdIsReady() -> void: stronghold_readied.emit()
 var unitConfigDict: Dictionary
 
 var saveslot: String = "save_0"
+
+enum DMG_TYPE{
+	NONE, SLASH, PIERCE, BLUNT
+}
+enum DMG_VIRTUE{
+	NONE, RED, WHITE, BLACK, PALE
+}
