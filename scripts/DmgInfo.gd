@@ -14,3 +14,5 @@ var lockout: float = 0
 
 var mod_mult: float = 1.0
 var mod_adder: int = 0
+
+var keyword_list: Array[StringName] = []

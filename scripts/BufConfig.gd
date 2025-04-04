@@ -5,3 +5,4 @@ class_name BufConfig extends Resource
 @export_range(1,600) var duration_default: int = 60
 
 @export var bufScript_list: Array[BufScript] = []
+@export var keyword_list: Array[StringName] = []

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BufConfig" load_steps=4 format=3 uid="uid://ccxpf5pts1m04"]
+
+[ext_resource type="Script" uid="uid://mw54xb6u0xjx" path="res://scripts/Bufitry/BS_KeyRes.gd" id="1_gigqa"]
+[ext_resource type="Texture2D" uid="uid://ba6kkvh2l6wuh" path="res://icon.svg" id="2_e5k44"]
+[ext_resource type="Script" uid="uid://bj0jn5y5tutwb" path="res://scripts/BufConfig.gd" id="3_o7whk"]
+
+[resource]
+script = ExtResource("3_o7whk")
+bufName = "base_burnres"
+icon = ExtResource("2_e5k44")
+duration_default = 60
+bufScript_list = Array[GDScript]([ExtResource("1_gigqa")])
+keyword_list = Array[StringName]([])
+metadata/_custom_type_script = "uid://bj0jn5y5tutwb"

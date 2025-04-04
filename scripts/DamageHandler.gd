@@ -22,5 +22,13 @@ func SkillHit(skill: Skill, from: Unit, target: Unit, dmg_info: DmgInfo):
 		for script: BufScript in buf.bufConfig_ref.bufScript_list:
 			script.WhenHit_After(buf, from, dmg_info, dmg_final)
 
-func BufAttack(buf: Buf, target: Unit, dmg_info: DmgInfo) -> void:
-	pass
+func BufAttack(attackbuf: Buf, target: Unit, dmg_info: DmgInfo) -> void:
+	for buf: Buf in target.BufListNode.get_children():
+		for script: BufScript in buf.bufConfig_ref.bufScript_list:
+			script.ReceiveDamage_Before(buf, dmg_info)
+	
+	var dmg_final: int = 0
+	
+	for buf: Buf in target.BufListNode.get_children():
+		for script: BufScript in buf.bufConfig_ref.bufScript_list:
+			script.ReceiveDamage_After(buf, dmg_info, dmg_final)
