@@ -11,8 +11,12 @@ func ChangeStack(stack: Vector2i = Vector2i.ZERO) -> void:
 
 ## Set Potency or Count to -1 to prevent changing it
 func SetStack(stack: Vector2i = Vector2i(-1,-1)) -> void:
+	var pot_old: int = pot
+	var count_old: int = count
 	if not stack.x < 0: pot = mini(stack.x, pot_max)
 	if not stack.y < 0: count = mini(stack.y, count_max)
+	for script: BufScript in bufConfig_ref.bufScript_list:
+		script.StackUpdate(self, pot_old, count_old)
 	stack_changed.emit()
 
 var unit_ref: Unit = null
@@ -26,7 +30,7 @@ func _ready() -> void:
 	if not is_instance_valid(bufConfig_ref) or not is_instance_valid(unit_ref):
 		queue_free()
 		return
-	
+	for script: BufScript in bufConfig_ref.bufScript_list: script.WhenInit(self)
 	GameData.FacilityNode.MakePopupText("+" + bufConfig_ref.bufName, unit_ref.position + Vector3(0,1.2,0), 4.0)
 
 var halfsecond_timer: float = 0.5

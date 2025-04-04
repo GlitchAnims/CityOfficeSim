@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://blrfk4bribf54"]
+[gd_scene load_steps=4 format=3 uid="uid://blrfk4bribf54"]
 
 [ext_resource type="Script" uid="uid://cqhruvalqa25g" path="res://scripts/Stronghold.gd" id="1_w4nkp"]
+[ext_resource type="Script" uid="uid://cgodvsst1up87" path="res://scripts/DamageHandler.gd" id="2_7o6ja"]
+[ext_resource type="Script" uid="uid://bmyh62mo8x7fg" path="res://scripts/Gamespace.gd" id="2_md2xf"]
 
 [node name="Stronghold" type="Node"]
 script = ExtResource("1_w4nkp")
 metadata/_custom_type_script = "uid://cqhruvalqa25g"
+
+[node name="Gamespace" type="Node3D" parent="."]
+script = ExtResource("2_md2xf")
+
+[node name="DamageHandler" type="Node" parent="."]
+script = ExtResource("2_7o6ja")

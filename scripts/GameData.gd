@@ -1,5 +1,8 @@
 extends Node
 
+var StrongholdNode: Stronghold = null
+var GamespaceNode: Gamespace = null
+var DamageHandlerNode: DamageHandler = null
 
 var combatSpeed: float = 1.0
 var combatSpeed_final: float = 1.0
@@ -41,8 +44,8 @@ var unit_rayquery: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.cre
 var m2ray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(Vector3.ONE, Vector3.ZERO, 0b100000)
 var floorRay_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(Vector3.ONE, Vector3.ZERO, 0b0010)
 
-
-const loadloader_scene: PackedScene = preload("res://Scenes/load_loader.tscn")
+const LoadLoader = preload("res://scripts/LoadLoader.gd")
+const loadloader_scene: PackedScene = preload("res://scenes/loadload_scn.tscn")
 func LoadNodeFromPath(parentNode: Node, path: String) -> Node:
 	var loaderNode: LoadLoader = loadloader_scene.instantiate()
 	loaderNode.scene_path = path

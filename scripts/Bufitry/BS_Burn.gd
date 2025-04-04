@@ -3,6 +3,9 @@ extends BufScript
 
 func FullSecondTick(buf: Buf) -> void:
 	
+	if is_instance_valid(buf.unit_ref):
+		GameData.DamageHandlerNode.BufAttack(buf, buf.unit_ref)
+	
 	var pot_float = float(buf.pot)
 	var pot_loss: int = ceili(pot_float / 5)
 	
