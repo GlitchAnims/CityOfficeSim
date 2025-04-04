@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://daj5blglgvpdv"]
+
+[ext_resource type="Script" uid="uid://cpnan6ragyvml" path="res://scripts/LoadLoader.gd" id="1_kfey3"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_kfey3")
