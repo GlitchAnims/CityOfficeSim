@@ -1,17 +1,14 @@
 class_name BufScript extends Resource
 
+@export var timing: TIMING = TIMING.FULL_SECOND_TICK
 
-func WhenInit(buf: Buf) -> void: pass
-func HalfSecondTick(buf: Buf) -> void: pass
-func FullSecondTick(buf: Buf) -> void: pass
-func StackUpdate(buf: Buf, pot_old: int, count_old: int) -> void: pass
+enum TIMING{
+	WHEN_INIT, WHEN_DESTROYED,
+	HALF_SECOND_TICK, FULL_SECOND_TICK,
+	STACK_UPDATE,
+	ON_HIT_BEFORE, ON_HIT_AFTER,
+	WHEN_HIT_BEFORE, WHEN_HIT_AFTER,
+	RECEIVE_DAMAGE_BEFORE, RECEIVE_DAMAGE_AFTER
+}
 
-
-func OnHit_Before(buf: Buf, target: Unit, dmg_info: DmgInfo) -> void: pass
-func OnHit_After(buf: Buf, target: Unit, dmg_info: DmgInfo, dmg_final: int) -> void: pass
-
-func WhenHit_Before(buf: Buf, from: Unit, dmg_info: DmgInfo) -> void: pass
-func WhenHit_After(buf: Buf, from: Unit, dmg_info: DmgInfo, dmg_final: int) -> void: pass
-
-func ReceiveDamage_Before(buf: Buf, dmg_info: DmgInfo) -> void: pass
-func ReceiveDamage_After(buf: Buf, dmg_info: DmgInfo, dmg_final: int) -> void: pass
+func Enact(buf: Buf) -> void: pass

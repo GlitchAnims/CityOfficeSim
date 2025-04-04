@@ -134,6 +134,8 @@ var skillInUse: Skill = null:
 		skillInUse = value
 		skillInUse_changed.emit()
 
+var lastHitUnit: Unit = null
+var lastTargetUnit: Unit = null
 const buf_scene: PackedScene = preload("res://scenes/buf.tscn")
 @onready var BufListNode: Node = $"BufList"
 signal bufList_changed

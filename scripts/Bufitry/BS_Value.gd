@@ -1,6 +1,5 @@
-class_name BS_Value extends BufScript
+class_name BS_Value extends Resource
 
 @export var default_result: int = 0
 
-func GetResult() -> int:
-	return default_result
+func GetResult(buf: Buf) -> int: return default_result
