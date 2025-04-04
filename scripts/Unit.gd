@@ -19,20 +19,33 @@ var brain: Brain = null
 var brain_timer: float = 1.0
 
 @export var hp_max: int = 100
-@export var hp: int = 100:
-	set(value):
-		hp = clampi(value, 0, hp_max)
-		hp_changed.emit()
+@export var hp: int = 100
 func SetupHP(value: int) -> void:
 	hp_max = value
 	hp = value
 signal hp_changed
 
-@export var lockout: float = 0.0:
-	set(value):
-		lockout = maxf(value, 0)
-		lockout_changed.emit()
-signal lockout_changed(value: float)
+func ChangeHP(change: int) -> void:
+	SetHP(maxi(hp + change, 0))
+func SetHP(value: int) -> void:
+	var hp_old: int = hp
+	hp = mini(value, hp_max)
+	hp_changed.emit()
+
+signal lockoutstate_changed
+var lockout_highest: float = 0.0
+var lockout: float = 0.0
+func TryAddLockout(value: float) -> void:
+	if lockout < 0.02: return
+	if value > lockout_highest:
+		lockout += value - lockout_highest # Extends lockout by difference between old and new
+		lockout_highest = value
+		lockoutstate_changed.emit()
+func TryReduceLockout(value: float) -> void:
+	lockout = maxf(lockout - value, 0)
+	if (is_zero_approx(lockout)):
+		lockout_highest = 0
+		lockoutstate_changed.emit()
 
 signal isCorpse_changed
 @export var isCorpse: bool = false:
@@ -70,6 +83,7 @@ func ResetStats() -> void:
 	skillPowerVarAdder = 0
 	proficiencyMult = 1.0
 
+var lastAttacker: Unit = null
 var currentTarget: Unit = null:
 	set(value):
 		currentTarget = value
@@ -184,24 +198,16 @@ func _physics_process(delta: float) -> void:
 	var blend: float = 1.0 - pow(0.5, combatDelta * 20.0)
 	vel_exact = vel_exact.lerp(Vector3.ZERO, blend)
 	
-	#RunSkillListCleanup()
-	if ClientData.rng.randf() < 0.1: server_physicsSync = true
-	if server_timer > 0: server_timer -= delta
-	else:
-		server_timer += 0.5
-		StatusCalcAndSet()
 	
 	if not translationCommand.is_zero_approx():
 		position += translationCommand
 		translationCommand = Vector3.ZERO
-		server_physicsSync = true
 	
 	# gravity
 	var totalPushForce: Vector3 = Vector3(0,-3.0,0) * combatDelta
 	
 	if not fixed:
 		if not pushAccumulator.is_zero_approx():
-			server_physicsSync = true
 			totalPushForce += pushAccumulator
 			pushAccumulator = Vector3.ZERO
 		
@@ -216,7 +222,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	_physics_process_unit(delta, combatDelta)
-	server_physicsSync = false
 
 func _physics_process_unit(_delta: float, _combatDelta: float) -> void: pass
 
@@ -251,8 +256,6 @@ func IntoEvent(enter: bool = true) -> void:
 		GameData.EventCheck()
 	else:
 		GameData.eventNodes.erase(self)
-
-func _AwarenessZoneEntered(_body: Node3D) -> void: server_physicsSync = true
 
 func TakeDamage(fromUnit: Unit, dmg: int, loud: bool = true) -> void:
 	if dmg < 1: return
