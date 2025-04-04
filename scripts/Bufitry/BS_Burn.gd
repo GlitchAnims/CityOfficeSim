@@ -1,6 +1,7 @@
 extends BufScript
 
-func HalfSecondTick(buf: Buf) -> void:
+
+func FullSecondTick(buf: Buf) -> void:
 	
 	var pot_float = float(buf.pot)
 	var pot_loss: int = ceili(pot_float / 5)

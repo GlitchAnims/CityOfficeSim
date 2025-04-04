@@ -30,6 +30,7 @@ func _ready() -> void:
 	GameData.FacilityNode.MakePopupText("+" + bufConfig_ref.bufName, unit_ref.position + Vector3(0,1.2,0), 4.0)
 
 var halfsecond_timer: float = 0.5
+var fullsecond: bool = false # Flips between true and false every halfsecond
 func _physics_process(delta: float) -> void:
 	var combatSpeed: float = GameData.combatSpeed_final
 	var combatDelta: float = combatSpeed * delta
@@ -37,6 +38,10 @@ func _physics_process(delta: float) -> void:
 	halfsecond_timer -= combatDelta
 	
 	if halfsecond_timer <= 0:
-		halfsecond_timer += 0.5
+		halfsecond_timer += 0.5 # Added .5 instead of set to .5 to remain consistent
+		
 		for script: BufScript in bufConfig_ref.bufScript_list:
 			script.HalfSecondTick(self)
+			if fullsecond: script.FullSecondTick(self)
+		
+		fullsecond = not fullsecond # Flip
