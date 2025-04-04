@@ -1,7 +1,19 @@
 class_name Buf extends Node
 
+signal stack_changed
+var pot_max: int = 99
+var count_max: int = 99
 var pot: int = 0
 var count: int = 0
+
+func ChangeStack(stack: Vector2i = Vector2i.ZERO) -> void:
+	SetStack(Vector2i(maxi(pot + stack.x, 0), maxi(count + stack.y, 0)))
+
+## Set Potency or Count to -1 to prevent changing it
+func SetStack(stack: Vector2i = Vector2i(-1,-1)) -> void:
+	if not stack.x < 0: pot = mini(stack.x, pot_max)
+	if not stack.y < 0: count = mini(stack.y, count_max)
+	stack_changed.emit()
 
 var unit_ref: Unit = null
 var bufConfig_ref: BufConfig = null
