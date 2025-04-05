@@ -22,6 +22,7 @@ glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.874733, 0.887588, 0.907796, 1)
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
 volumetric_fog_emission = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_je5ch"]
@@ -53,6 +54,7 @@ billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+proximity_fade_distance = 100.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lt3g8"]
 material = SubResource("StandardMaterial3D_je5ch")
@@ -101,8 +103,11 @@ size = Vector3(3.67334, 6.29382, 4.70557)
 
 [node name="SnowParticles1" type="GPUParticles3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.898, 8.2351, 0)
+visibility_range_fade_mode = 1
 amount = 150
 lifetime = 15.0
+preprocess = 2.0
+explosiveness = 0.2
 visibility_aabb = AABB(-5, -10, -30, 60, 60, 60)
 process_material = SubResource("ParticleProcessMaterial_je5ch")
 draw_pass_1 = SubResource("PlaneMesh_lt3g8")
@@ -112,6 +117,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.63, 11.049, 0)
 cast_shadow = 0
 amount = 500
 lifetime = 15.0
+preprocess = 3.0
+explosiveness = 0.2
 visibility_aabb = AABB(-5, -10, -30, 60, 60, 60)
 process_material = SubResource("ParticleProcessMaterial_pt0ik")
 draw_pass_1 = SubResource("QuadMesh_d3br3")
