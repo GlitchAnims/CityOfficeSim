@@ -2,7 +2,6 @@ class_name BufConfig extends Resource
 
 @export var bufName: String = "Nameless"
 @export var icon: Texture2D = preload("res://icon.svg")
-@export_range(1,600) var duration_default: int = 60
 
 @export var has_count: bool = false
 @export var consq_list: Array[M_Consq] = []

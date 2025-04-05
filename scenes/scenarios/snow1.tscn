@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://c61hgb8x2wj8m"]
+
+[ext_resource type="PackedScene" uid="uid://hdgvuyrolc0d" path="res://scenes/scenario.tscn" id="1_82bxu"]
+[ext_resource type="PackedScene" uid="uid://dulluv1rysnty" path="res://scenes/unit_scn.tscn" id="2_je5ch"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_je5ch"]
+sky_top_color = Color(0.619608, 0.74902, 0.815686, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+sun_angle_max = 189.49
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_lt3g8"]
+sky_material = SubResource("ProceduralSkyMaterial_je5ch")
+
+[sub_resource type="Environment" id="Environment_xwjbi"]
+background_mode = 2
+sky = SubResource("Sky_lt3g8")
+ambient_light_source = 2
+ambient_light_color = Color(0.937255, 1, 1, 1)
+ambient_light_energy = 0.1
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.874733, 0.887588, 0.907796, 1)
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_je5ch"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_je5ch"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(5, 10, 30)
+gravity = Vector3(5, -1, 0)
+damping_min = 2.976
+damping_max = 3.571
+scale_min = 1.2
+scale_max = 2.0
+color = Color(0.901961, 0.901961, 0.901961, 0.454902)
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_speed_random = 0.01
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_je5ch"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lt3g8"]
+material = SubResource("StandardMaterial3D_je5ch")
+orientation = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pt0ik"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 10, 30)
+angle_min = 1.07288e-05
+angle_max = 240.0
+gravity = Vector3(5, -0.8, 0)
+damping_min = 2.976
+damping_max = 3.571
+scale_min = 0.2
+scale_max = 0.3
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_speed_random = 0.01
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kg6m"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_d3br3"]
+material = SubResource("StandardMaterial3D_2kg6m")
+
+[node name="Scenario" instance=ExtResource("1_82bxu")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_xwjbi")
+
+[node name="Unit" parent="." index="1" instance=ExtResource("2_je5ch")]
+
+[node name="Floor1" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_je5ch")
+
+[node name="GPUParticlesAttractorBox3D" type="GPUParticlesAttractorBox3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268799, 3.04038, -4.91096)
+size = Vector3(3.67334, 6.29382, 4.70557)
+
+[node name="SnowParticles1" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.898, 8.2351, 0)
+amount = 150
+lifetime = 15.0
+visibility_aabb = AABB(-5, -10, -30, 60, 60, 60)
+process_material = SubResource("ParticleProcessMaterial_je5ch")
+draw_pass_1 = SubResource("PlaneMesh_lt3g8")
+
+[node name="SnowParticles2" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.63, 11.049, 0)
+cast_shadow = 0
+amount = 500
+lifetime = 15.0
+visibility_aabb = AABB(-5, -10, -30, 60, 60, 60)
+process_material = SubResource("ParticleProcessMaterial_pt0ik")
+draw_pass_1 = SubResource("QuadMesh_d3br3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653255, 0)
+light_energy = 4.44
+shadow_enabled = true
+omni_range = 55.94

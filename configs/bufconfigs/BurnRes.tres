@@ -65,7 +65,6 @@ metadata/_custom_type_script = "uid://c1kn3tiwdftjw"
 script = ExtResource("3_o7whk")
 bufName = "base_burnres"
 icon = ExtResource("2_e5k44")
-duration_default = 60
 has_count = false
 consq_list = Array[ExtResource("1_e5k44")]([SubResource("Resource_4g48g"), SubResource("Resource_36fi4")])
 keyword_list = Array[StringName]([])

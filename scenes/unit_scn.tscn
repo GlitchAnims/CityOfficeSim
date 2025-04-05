@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bdflncsx8pkl7" path="res://scripts/Unit.gd" id="1_01ypy"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_01ypy"]
-height = 1.4
+height = 1.2
 radius = 0.3
 
 [node name="Unit" type="CharacterBody3D"]
@@ -11,7 +11,7 @@ script = ExtResource("1_01ypy")
 metadata/_custom_type_script = "uid://b4hs4l6tfcvsa"
 
 [node name="ColShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CylinderShape3D_01ypy")
 
 [node name="NavAgent" type="NavigationAgent3D" parent="."]
