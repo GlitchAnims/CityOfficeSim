@@ -1,4 +1,4 @@
-class_name BufScript extends Resource
+class_name M_Consq extends Resource
 
 @export var timing: TIMING = TIMING.FULL_SECOND_TICK
 
@@ -11,4 +11,4 @@ enum TIMING{
 	RECEIVE_DAMAGE_BEFORE, RECEIVE_DAMAGE_AFTER
 }
 
-func Enact(buf: Buf, mCore: ModularCore) -> void: pass
+func Enact(mCore: ModularCore) -> void: pass

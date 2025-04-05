@@ -33,11 +33,22 @@ func EnlistUnit(unit: Unit, remove_instead: bool = false) -> void:
 		unitList.erase(unit)
 		unitDict.erase(unit.bodyID)
 
+const mCore_list_limit: int = 15
+var mCore_list: Array[ModularCore] = []
+var mCore_list_i: int = 0
+func GetNextModularCore() -> ModularCore:
+	mCore_list_i += 1
+	if mCore_list_i >= mCore_list_limit: mCore_list_i = 0
+	mCore_list[mCore_list_i].ClearAllValues()
+	return mCore_list[mCore_list_i]
 
 func _ready() -> void:
 	guiray_query.collide_with_areas = true
 	unit_rayquery.collide_with_areas = true
 	m2ray_query.collide_with_areas = true
+	
+	for i in mCore_list_limit:
+		mCore_list.push_back(ModularCore.new())
 
 var guiray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(Vector3.ONE, Vector3.ZERO, 0b001000)
 var unit_rayquery: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(Vector3.ONE, Vector3.ZERO, 0b1000)
