@@ -1,14 +1,72 @@
-[gd_resource type="Resource" script_class="BufConfig" load_steps=4 format=3 uid="uid://ccxpf5pts1m04"]
+[gd_resource type="Resource" script_class="BufConfig" load_steps=16 format=3 uid="uid://ccxpf5pts1m04"]
 
-[ext_resource type="Script" uid="uid://mw54xb6u0xjx" path="res://scripts/Bufitry/BS_KeyRes.gd" id="1_gigqa"]
+[ext_resource type="Script" uid="uid://cow3x22hb8u5c" path="res://scripts/Modular/Consq/M_Consq.gd" id="1_e5k44"]
+[ext_resource type="Script" uid="uid://dq52mrpkj3mjc" path="res://scripts/Modular/Getters/M_StackGetter.gd" id="2_4g48g"]
+[ext_resource type="Script" uid="uid://ca1lqmxj5oy65" path="res://scripts/Modular/Getters/M_Getter.gd" id="2_54kpf"]
 [ext_resource type="Texture2D" uid="uid://ba6kkvh2l6wuh" path="res://icon.svg" id="2_e5k44"]
+[ext_resource type="Script" uid="uid://bv21nm1j28ngf" path="res://scripts/Modular/Consq/M_DamageRes.gd" id="2_o7whk"]
 [ext_resource type="Script" uid="uid://bj0jn5y5tutwb" path="res://scripts/BufConfig.gd" id="3_o7whk"]
+[ext_resource type="Script" uid="uid://d1p2mjjcsmcug" path="res://scripts/Modular/Getters/M_MathSingle.gd" id="3_o72ng"]
+[ext_resource type="Script" uid="uid://bsuiaht8l3n6w" path="res://scripts/Modular/Getters/M_Math.gd" id="5_36fi4"]
+[ext_resource type="Script" uid="uid://c1kn3tiwdftjw" path="res://scripts/Modular/Consq/M_StackChange.gd" id="5_o72ng"]
+
+[sub_resource type="Resource" id="Resource_xmqod"]
+script = ExtResource("2_54kpf")
+default_result = 1.0
+metadata/_custom_type_script = "uid://ca1lqmxj5oy65"
+
+[sub_resource type="Resource" id="Resource_ptwtg"]
+script = ExtResource("2_4g48g")
+pot_or_count = 0
+default_result = 0.0
+metadata/_custom_type_script = "uid://dq52mrpkj3mjc"
+
+[sub_resource type="Resource" id="Resource_5npya"]
+script = ExtResource("3_o72ng")
+op = 2
+getter = SubResource("Resource_ptwtg")
+applicable = 0.01
+default_result = 0.0
+metadata/_custom_type_script = "uid://d1p2mjjcsmcug"
+
+[sub_resource type="Resource" id="Resource_0jrbd"]
+script = ExtResource("5_36fi4")
+op = 1
+item_list = Array[ExtResource("2_54kpf")]([SubResource("Resource_xmqod"), SubResource("Resource_5npya")])
+default_result = 0.0
+metadata/_custom_type_script = "uid://bsuiaht8l3n6w"
+
+[sub_resource type="Resource" id="Resource_4g48g"]
+script = ExtResource("2_o7whk")
+affect_dmg = true
+affect_lockout = false
+dmg_modify = 0
+dmg_mult_def = 1.0
+lockout_mult_def = 1.0
+dmg_getter = SubResource("Resource_0jrbd")
+check_keywords = true
+check_types = false
+check_virtues = false
+keywords_affected = Array[StringName]([&"burn"])
+types_affected = Array[int]([])
+virtues_affected = Array[int]([])
+timing = 7
+metadata/_custom_type_script = "uid://bv21nm1j28ngf"
+
+[sub_resource type="Resource" id="Resource_36fi4"]
+script = ExtResource("5_o72ng")
+set_stack = false
+default_stack = Vector2i(-1, 0)
+skip_getters = true
+timing = 2
+metadata/_custom_type_script = "uid://c1kn3tiwdftjw"
 
 [resource]
 script = ExtResource("3_o7whk")
 bufName = "base_burnres"
 icon = ExtResource("2_e5k44")
 duration_default = 60
-bufScript_list = Array[GDScript]([ExtResource("1_gigqa")])
+has_count = false
+consq_list = Array[ExtResource("1_e5k44")]([SubResource("Resource_4g48g"), SubResource("Resource_36fi4")])
 keyword_list = Array[StringName]([])
 metadata/_custom_type_script = "uid://bj0jn5y5tutwb"

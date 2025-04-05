@@ -15,9 +15,12 @@ var info_dict: Dictionary
 ## Set Potency or Count to -1 to prevent changing it
 func SetStack(stack: Vector2i = Vector2i(-1,-1)) -> void:
 	pot_old = pot
-	count_old = count
 	if not stack.x < 0: pot = mini(stack.x, pot_max)
-	if not stack.y < 0: count = mini(stack.y, count_max)
+	
+	if bufConfig_ref.has_count:
+		count_old = count
+		if not stack.y < 0: count = mini(stack.y, count_max)
+	
 	bufConfig_ref.StackUpdate(self)
 	stack_changed.emit()
 

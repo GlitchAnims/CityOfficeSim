@@ -8,7 +8,7 @@ enum DMG_METHOD{
 @export var target_getter: M_UnitGet
 @export var dmg_default: int = 1
 @export var dmg_getter: M_Getter
-@export var lockout_default: int = 0
+@export var lockout_default: float = 0
 @export var lockout_getter: M_Getter
 @export var dmg_type: GameData.DMG_TYPE = GameData.DMG_TYPE.NONE
 @export var dmg_virtue: GameData.DMG_VIRTUE = GameData.DMG_VIRTUE.RED

@@ -12,6 +12,7 @@ var dmg_type: GameData.DMG_TYPE
 var dmg_virtue: GameData.DMG_VIRTUE = GameData.DMG_VIRTUE.RED
 var lockout: float = 0
 
+var mod_mult_base: float = 1.0
 var mod_mult: float = 1.0
 var mod_adder: int = 0
 
