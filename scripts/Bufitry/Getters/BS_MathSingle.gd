@@ -1,10 +1,10 @@
 class_name BS_MathSingle extends BS_Getter
 
-@export var item: BS_Getter = null
+@export var getter: BS_Getter = null
 
 func GetResult(buf: Buf) -> int:
 	var finalValue = default_result
-	if is_instance_valid(item): finalValue = item.GetResult(buf)
+	if is_instance_valid(getter): finalValue = getter.GetResult(buf)
 	
 	match op:
 		SINGLE_OP.ABS: finalValue = abs(finalValue)
