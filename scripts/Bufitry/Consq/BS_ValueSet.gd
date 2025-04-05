@@ -1,4 +1,4 @@
-class_name BS_GetterSet extends BS_Consq
+class_name BS_ValueSet extends BS_Consq
 
 @export var getter: BS_Getter = null
 @export_range(0,9) var value_idx: int = 0
