@@ -1,6 +1,6 @@
-class_name BS_MathSingle extends BS_Value
+class_name BS_MathSingle extends BS_Getter
 
-@export var item: BS_Value = null
+@export var item: BS_Getter = null
 
 func GetResult(buf: Buf) -> int:
 	var finalValue = default_result

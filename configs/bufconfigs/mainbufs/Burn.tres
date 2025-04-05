@@ -9,6 +9,6 @@ script = ExtResource("3_2jneh")
 bufName = "base_burn"
 icon = ExtResource("2_4lown")
 duration_default = 60
-bufScript_list = Array[ExtResource("1_ofr0x")]([null])
+bufScript_list = Array[ExtResource("1_ofr0x")]([])
 keyword_list = Array[StringName]([&"burn"])
 metadata/_custom_type_script = "uid://bj0jn5y5tutwb"

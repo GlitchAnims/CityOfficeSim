@@ -1,7 +1,7 @@
-class_name BS_Math extends BS_Value
+class_name BS_Math extends BS_Getter
 
 @export var op: MATH_OP = MATH_OP.ADD
-@export var item_list: Array[BS_Value] = []
+@export var item_list: Array[BS_Getter] = []
 
 func GetResult(buf: Buf) -> int:
 	var finalValue = default_result
