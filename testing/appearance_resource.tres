@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Appearance" load_steps=2 format=3 uid="uid://bpykenf6vmx86"]
+
+[ext_resource type="Script" uid="uid://slurkdaoyui8" path="res://scripts/Savedata/Appearance.gd" id="1_qjit8"]
+
+[resource]
+script = ExtResource("1_qjit8")
+haircolor = Color(1, 1, 1, 1)
+haircolor_2 = Color(1, 1, 1, 1)
+preset_hair = &""
+skintone = 0
+metadata/_custom_type_script = "uid://slurkdaoyui8"

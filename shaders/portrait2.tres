@@ -1,0 +1,12 @@
+[gd_resource type="Shader" format=3 uid="uid://3bfxp2n71b57"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D hair_back;
+
+void fragment() {
+	vec4 tex = texture (hair_back, UV);
+	COLOR = tex;
+}
+"

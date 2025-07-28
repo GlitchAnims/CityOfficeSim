@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chksbptw58jmy"
-path="res://.godot/imported/BufIconSheet.png-660c4c63d49d2076e3bc209552ab8a8f.ctex"
+uid="uid://xe82u403mgid"
+path="res://.godot/imported/portrait_blank.png-c7373061b078edc065722b7aecbff679.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BufIconSheet.png"
-dest_files=["res://.godot/imported/BufIconSheet.png-660c4c63d49d2076e3bc209552ab8a8f.ctex"]
+source_file="res://sprites/Portrait/portrait_blank.png"
+dest_files=["res://.godot/imported/portrait_blank.png-c7373061b078edc065722b7aecbff679.ctex"]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1

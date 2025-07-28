@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://gxesx85hie1l"]
+
+[ext_resource type="Shader" uid="uid://3bfxp2n71b57" path="res://shaders/portrait2.tres" id="1_qv2ou"]
+[ext_resource type="Texture2D" uid="uid://chksbptw58jmy" path="res://sprites/BufIconSheet.png" id="2_jmk2w"]
+
+[resource]
+shader = ExtResource("1_qv2ou")
+shader_parameter/hair_back = ExtResource("2_jmk2w")

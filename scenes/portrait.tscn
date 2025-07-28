@@ -1,0 +1,29 @@
+[gd_scene load_steps=10 format=3 uid="uid://5wax3ittttj4"]
+
+[ext_resource type="Texture2D" uid="uid://xe82u403mgid" path="res://sprites/Portrait/portrait_blank.png" id="1_31ep3"]
+[ext_resource type="Shader" uid="uid://3jq88t15njnr" path="res://shaders/portrait.tres" id="1_efsuh"]
+[ext_resource type="Script" uid="uid://qab2jg5rn4s0" path="res://scripts/Portrait.gd" id="1_k07cr"]
+[ext_resource type="Texture2D" uid="uid://k4f4p22v2oyy" path="res://sprites/StatusIcons.png" id="2_bmjsd"]
+[ext_resource type="Texture2D" uid="uid://n6tp7g08tdet" path="res://sprites/SkillIconSheet.png" id="2_kk1se"]
+[ext_resource type="Texture2D" uid="uid://chksbptw58jmy" path="res://sprites/BufIconSheet.png" id="2_qffwa"]
+[ext_resource type="Texture2D" uid="uid://bth2cvroxiur1" path="res://sprites/ClassIconSheet.png" id="3_bmjsd"]
+[ext_resource type="Texture2D" uid="uid://k0fdr4mhm4e1" path="res://sprites/Icon_AttackType.png" id="6_7abl3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qffwa"]
+shader = ExtResource("1_efsuh")
+shader_parameter/HairBack = ExtResource("2_qffwa")
+shader_parameter/Face = ExtResource("2_bmjsd")
+shader_parameter/Eyes = ExtResource("2_kk1se")
+shader_parameter/Mouth = ExtResource("3_bmjsd")
+shader_parameter/HairFront = ExtResource("6_7abl3")
+
+[node name="Portrait" type="TextureRect"]
+material = SubResource("ShaderMaterial_qffwa")
+offset_right = 256.0
+offset_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_31ep3")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("1_k07cr")
